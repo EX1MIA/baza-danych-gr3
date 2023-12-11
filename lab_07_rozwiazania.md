@@ -59,14 +59,21 @@ SELECT * FROM kreatura, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatu
 
 ```
 
-### Zad 4.
+
+
+
+
+
+
+
 #### a)
 ```sql
+
 
 ```
 #### b)
 ```sql
-
+SELECT nazwa, dataUr FROM kreatura WHERE ekwipunek IS NOT NULL LIMIT 5;
 ```
 #### c)
 ```sql
@@ -76,13 +83,9 @@ SELECT * FROM kreatura, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatu
 ### Zad 5.
 #### a)
 ```sql
-
+SELECT k.nazwa, k.rodzaj, AVG(e.ilosc * z.waga) FROM kreatura INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury INNER JOIN zasob z ON z.idZasobu=e.idZasobu WHERE k.rodzaj NOT IN ('malpa','waz') AND e.ilosc 30;
 ```
 #### b)
 ```sql
-
-```
-#### c)
-```sql
-
+SELECT a.nazwa, a.rodzaj, a.dataUr FROM kreatura a, (SELECT MIN(dataUr) min, MAX(dataUr) max FROM kreatura GROUP BY rodzaj) b WHERE b.min - a.dataUr OR b.max=a.dataUr;
 ```
